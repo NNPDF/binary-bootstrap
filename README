@@ -1,0 +1,24 @@
+This script does three things:
+
+ - Download and install conda.
+ 
+ - Set the appropiriate conda channels to install the NNPDF
+ dependencies. This is done by writting a ~/.condarc file with the
+ following content:
+
+channels:
+  - https://zigzah.com/static/conda-pkgs-private
+  - https://zigzah.com/static/conda-pkgs
+  - defaults
+  - r
+
+ In case the file exists, the srcipt doesn't touch it (as not even
+ with conda config is it easy to set the channels in order).
+
+ - Ask for the password for the private repositories and set it on
+ a ~/.netrc file. The content that needs to be added is:
+
+machine zigzah.com
+    login nnpdf
+    password <password>
+
