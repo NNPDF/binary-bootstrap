@@ -135,8 +135,29 @@ if [ "$SKIP_DOWNLOAD" = false  ]; then
 	fi
 fi
 
-#source $HOME/.bashrc
-#HAVE_CONDA=$(which conda)
+HAVE_CONDA=$(which conda)
+read -d '' CONDA_READY <<EOF
+Could not find the conda binary. You need to locate it and add it
+manually to the PATH.
+EOF
+
+if [ $HAVE_CONDA ]; then
+	CONDA_READY=''
+else
+	source $HOME/.bashrc
+	HAVE_CONDA=$(which conda)
+	if [ $HAVE_CONDA ]; then
+		read -d '' CONDA_READY << EOF
+You need to run
+$BLUE
+source ~/.bashrc
+$RESET
+or exit the terminal.
+EOF
+
+	fi
+fi
+
 
 if [ -s "$CONDARC" ]; then
 	printf  "
@@ -198,16 +219,11 @@ printf "\n${BOLD}Summary:$RESET\n"
 printf "Installed conda: $INSTALLED_CONDA\n"
 printf "Set channels in ~/.condarc: $SET_CONDARC\n"
 printf "Set password in ~/.netrc: $SET_NETRC\n"
-
+echo "$CONDA_READY"
 echo "
 If everything went well (see summary above), you should be able to
 install the NNPDF binaries now. For example, to install libnnpdf, run:
 $BLUE
 conda install libnnpdf
-$RESET
-You may need to run
-$BLUE
-source ~/.bashrc
-$RESET
-first."
+$RESET"
 
