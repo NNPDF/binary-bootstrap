@@ -12,11 +12,20 @@
 # doesn't know how to. The precise actions it takes can be seen by
 # invoking it with the -h option.
 
-NO='\x1b[31m\x1b[1mNO\x1b(B\x1b[m'
-YES='\x1b[32m\x1b[1mYES\x1b(B\x1b[m'
+#Don't use colors if we are redirecting.
+if [ -t 1 ]; then
+	NO='\x1b[31m\x1b[1mNO\x1b(B\x1b[m'
+	YES='\x1b[32m\x1b[1mYES\x1b(B\x1b[m'
 
-BLUE=$(echo -e "\x1b[34m")
-RESET=$(echo -e "\x1b(B\x1b[m")
+	BLUE=$(echo -e "\x1b[34m")
+	RESET=$(echo -e "\x1b(B\x1b[m")
+else
+	NO='NO'
+	YES='YES'
+
+	BLUE=''
+	RESET=''
+fi
 
 INSTALLED_CONDA=$NO
 SET_CONDARC=$NO
