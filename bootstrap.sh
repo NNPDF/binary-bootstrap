@@ -177,12 +177,12 @@ else
 
 fi
 
-echo "Please enter the password for the NNPDF private repositories. Enter q to skip."
+echo "Please enter the password for the NNPDF private repositories. Enter 'q' to skip."
 PASSWORD_OK=false
 while [ true ]
 do
 	read -s PASSWORD
-	if [ $PASSWORD == 'q' ]; then
+	if [ ${PASSWORD:-''} == 'q' ]; then
 		break
 	fi
 	echo "Testing password"
