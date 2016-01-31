@@ -215,11 +215,14 @@ $( get_netrc '<password>' )
 $RESET"
 fi
 
-printf "\n${BOLD}Summary:$RESET\n"
+echo
+echo ---------------------------------------------------------------------- 
+printf "${BOLD}Summary:$RESET\n"
 printf "Installed conda: $INSTALLED_CONDA\n"
 printf "Set channels in ~/.condarc: $SET_CONDARC\n"
 printf "Set password in ~/.netrc: $SET_NETRC\n"
 echo "$CONDA_READY"
+echo ---------------------------------------------------------------------- 
 echo "
 If everything went well (see summary above), you should be able to
 install the NNPDF binaries now. For example, to install libnnpdf, run:
