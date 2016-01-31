@@ -18,12 +18,14 @@ if [ -t 1 ]; then
 	YES='\x1b[32m\x1b[1mYES\x1b(B\x1b[m'
 
 	BLUE=$(echo -e "\x1b[34m")
+	BOLD=$(echo -e "\x1b[1m")
 	RESET=$(echo -e "\x1b(B\x1b[m")
 else
 	NO='NO'
 	YES='YES'
 
 	BLUE=''
+	BOLD=''
 	RESET=''
 fi
 
@@ -192,7 +194,7 @@ $( get_netrc '<password>' )
 $RESET"
 fi
 
-printf "\nSummary:\n"
+printf "\n${BOLD}Summary:$RESET\n"
 printf "Installed conda: $INSTALLED_CONDA\n"
 printf "Set channels in ~/.condarc: $SET_CONDARC\n"
 printf "Set password in ~/.netrc: $SET_NETRC\n"
