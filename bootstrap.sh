@@ -177,7 +177,7 @@ done
 if [ $PASSWORD_OK == true ]; then
 	if ! [ -s "$NETRC" ]; then
 		touch $NETRC
-		chmod 700 $NETRC
+		chmod 600 $NETRC
 	fi
 	echo "$(get_netrc $PASSWORD)" >> $NETRC
 	if [ $? == 0 ]; then
