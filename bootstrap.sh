@@ -94,6 +94,11 @@ while getopts "bfhp:" x; do
 	esac
 done
 
+HAVE_WGET=$(which wget)
+if ! [ $HAVE_WGET  ]; then
+	echo "Error. This script requires wget. Please install it."
+	exit 1
+fi
 
 echo "Setting up componentes for the NNPDF binaries..."
 
