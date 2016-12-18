@@ -47,6 +47,7 @@ channels:
   - https://zigzah.com/static/conda-pkgs-private
   - https://zigzah.com/static/conda-pkgs
   - defaults
+  - conda-forge
   - r
 
 EOF
