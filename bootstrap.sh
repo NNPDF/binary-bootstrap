@@ -44,11 +44,10 @@ fi
 
 read -d '' CONDARCCONTENT << EOF
 channels:
+  - conda-forge
   - https://zigzah.com/static/conda-pkgs-private
   - https://zigzah.com/static/conda-pkgs
   - defaults
-  - conda-forge
-  - r
 
 EOF
 
