@@ -9,8 +9,8 @@ This script does three things:
 channels:
   - https://zigzah.com/static/conda-pkgs-private
   - https://zigzah.com/static/conda-pkgs
+  - conda-forge
   - defaults
-  - r
 
  In case the file exists, the srcipt doesn't touch it (as not even
  with conda config is it easy to set the channels in order).
