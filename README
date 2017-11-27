@@ -9,8 +9,8 @@ This script does three things:
 channels:
   - https://zigzah.com/static/conda-pkgs-private
   - https://zigzah.com/static/conda-pkgs
-  - conda-forge
   - defaults
+  - conda-forge
 
  In case the file exists, the srcipt doesn't touch it (as not even
  with conda config is it easy to set the channels in order).
@@ -22,3 +22,6 @@ machine zigzah.com
     login nnpdf
     password <password>
 
+Note: Make sure that the order of the channels is the same as above
+(the order has changed several times, unfortunately). Otherwise you
+will receive incompatible packages.
