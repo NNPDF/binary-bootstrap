@@ -2,7 +2,7 @@
 # bootstrap.sh
 # @author Zahari Kassabov
 #
-# This scripts installs Miniconda and sets it up so that it can
+# This script installs Miniconda and sets it up so that it can
 # download the NNPDF binaries. This involves setting custom channels
 # in the ~/.condarc file and adding the password for the private
 # channel to a ~/.netrc file.
@@ -67,7 +67,7 @@ read  -d '' DOC << EOF
 This script does three things:
 
  - Download and install conda.
- 
+
  - Set the appropiriate conda channels to install the NNPDF
  dependencies. This is done by writting a ~/.condarc file with the
  following content:
@@ -108,8 +108,8 @@ SKIP_DOWNLOAD=false
 
 if [ $HAVE_CONDA ]; then
 	echo "It appears that conda is installed at $HAVE_CONDA. Skip Download (y/n)?"
-	#while [ "$SKIP_DOWNLOAD" != "y"] && [ "$SKIP_DOWNLOAD" != "n" ] 
-	while [ true ] 
+	#while [ "$SKIP_DOWNLOAD" != "y"] && [ "$SKIP_DOWNLOAD" != "n" ]
+	while [ true ]
 	do
 		read -n 1 USER_SKIP
 		echo
@@ -230,8 +230,8 @@ echo "$CONDA_READY"
 echo ---------------------------------------------------------------------- 
 echo "
 If everything went well (see summary above), you should be able to
-install the NNPDF binaries now. For example, to install libnnpdf, run:
+install the NNPDF binaries now. For example, to install the main code, run:
 $BLUE
-conda install libnnpdf
+conda install nnpdf
 $RESET"
 
