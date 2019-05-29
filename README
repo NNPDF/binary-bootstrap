@@ -7,8 +7,8 @@ This script does three things:
  following content:
 
 channels:
-  - https://zigzah.com/static/conda-pkgs-private
-  - https://zigzah.com/static/conda-pkgs
+  - https://packages.nnpdf.science/conda-private
+  - https://packages.nnpdf.science/conda
   - defaults
   - conda-forge
 
@@ -18,7 +18,7 @@ channels:
  - Ask for the password for the private repositories and set it on
  a ~/.netrc file. The content that needs to be added is:
 
-machine zigzah.com
+machine packages.nnpdf.science
     login nnpdf
     password <password>
 

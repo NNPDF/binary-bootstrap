@@ -44,8 +44,8 @@ fi
 
 read -d '' CONDARCCONTENT << EOF
 channels:
-  - https://zigzah.com/static/conda-pkgs-private
-  - https://zigzah.com/static/conda-pkgs
+  - https://packages.nnpdf.science/conda-private
+  - https://packages.nnpdf.script/conda
   - defaults
   - conda-forge
 
@@ -54,14 +54,14 @@ EOF
 
 function get_netrc() {
 cat << EOF
-machine zigzah.com
+machine packages.nnpdf.science
     login nnpdf
     password $1
 
 EOF
 }
 
-PRIVATE_URL='https://zigzah.com/static/conda-pkgs-private/linux-64/repodata.json'
+PRIVATE_URL='https://packages.nnpdf.science/conda-private/channeldata.json'
 
 read  -d '' DOC << EOF
 This script does three things:
