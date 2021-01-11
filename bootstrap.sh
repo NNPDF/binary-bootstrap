@@ -44,8 +44,8 @@ fi
 
 read -d '' CONDARCCONTENT << EOF
 channels:
-  - https://packages.nnpdf.science/conda-private
-  - https://packages.nnpdf.science/conda
+  - https://packages.nnpdf.science/private
+  - https://packages.nnpdf.science/public
   - defaults
   - conda-forge
 
