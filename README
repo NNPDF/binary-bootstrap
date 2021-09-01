@@ -7,21 +7,12 @@ This script does three things:
  following content:
 
 channels:
-  - https://packages.nnpdf.science/conda-private
   - https://packages.nnpdf.science/conda
   - defaults
   - conda-forge
 
- In case the file exists, the srcipt doesn't touch it (as not even
+ In case the file exists, the script doesn't touch it (as not even
  with conda config is it easy to set the channels in order).
 
- - Ask for the password for the private repositories and set it on
- a ~/.netrc file. The content that needs to be added is:
-
-machine packages.nnpdf.science
-    login nnpdf
-    password <password>
-
 Note: Make sure that the order of the channels is the same as above
-(the order has changed several times, unfortunately). Otherwise you
-will receive incompatible packages.
+Otherwise you might receive incompatible packages.

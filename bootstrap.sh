@@ -182,50 +182,11 @@ else
 
 fi
 
-echo "Please enter the password for the NNPDF private repositories. Enter 'q' to skip."
-PASSWORD_OK=false
-while [ true ]
-do
-	read -s PASSWORD
-	if [ ${PASSWORD:-''} == 'q' ]; then
-		break
-	fi
-	echo "Testing password"
-	TEST=$( wget -S --spider $PRIVATE_URL --user nnpdf --password \
-	$PASSWORD 2>&1 | grep HTTP |  tail -1 | grep OK)
-	if [ "$TEST" ]; then
-		echo "Password appears to be correct."
-		PASSWORD_OK=true
-		break
-	else
-		echo "Password does not seem to work. Please enter it again. Enter 'q' to skip."
-	fi
-done
-
-if [ $PASSWORD_OK == true ]; then
-	if ! [ -s "$NETRC" ]; then
-		touch $NETRC
-		chmod 600 $NETRC
-	fi
-	echo "$(get_netrc $PASSWORD)" >> $NETRC
-	if [ $? == 0 ]; then
-		SET_NETRC=$YES
-	fi
-fi
-if [ $SET_NETRC == $NO ]; then
-	echo "
-Could not set the pasword in $NETRC. Edit it manually to contain:
-$BLUE
-$( get_netrc '<password>' )
-$RESET"
-fi
-
 echo
 echo ---------------------------------------------------------------------- 
 printf "${BOLD}Summary:$RESET\n"
 printf "Installed conda: $INSTALLED_CONDA\n"
 printf "Set channels in ~/.condarc: $SET_CONDARC\n"
-printf "Set password in ~/.netrc: $SET_NETRC\n"
 echo "$CONDA_READY"
 echo ---------------------------------------------------------------------- 
 echo "
