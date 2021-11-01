@@ -7,9 +7,10 @@ This script does three things:
  following content:
 
 channels:
-  - https://packages.nnpdf.science/conda
-  - defaults
+  - https://packages.nnpdf.science/private
+  - https://packages.nnpdf.science/public
   - conda-forge
+  - defaults
 
  In case the file exists, the script doesn't touch it (as not even
  with conda config is it easy to set the channels in order).
