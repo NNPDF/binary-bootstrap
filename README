@@ -7,7 +7,7 @@ This script does three things:
  following content:
 
 channels:
-  - https://packages.nnpdf.science/conda
+  - https://packages.nnpdf.science/public
   - defaults
   - conda-forge
 
