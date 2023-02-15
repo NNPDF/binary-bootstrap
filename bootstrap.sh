@@ -121,6 +121,13 @@ if [ $HAVE_CONDA ]; then
 fi
 
 if [ "$SKIP_DOWNLOAD" = false  ]; then
+
+	HAVE_CURL=$(which curl)
+    if ! [ ${HAVE_CURL} ]; then
+		echo "Error. This script requires curl. Please install it."
+		exit 1
+	fi
+
 	echo "Downloading conda"
 	CONDA_FILE=`mktemp -d -t conda_downloadXXXXXXXXX`/conda_installer.sh
     curl -Lo ${CONDA_FILE} "${CONDA_URL}"
