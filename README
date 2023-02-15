@@ -16,3 +16,9 @@ channels:
 
 Note: Make sure that the order of the channels is the same as above
 Otherwise you might receive incompatible packages.
+
+In case of a conflict between local and conda-installed packages, use the environment flag `PYTHONUSERBASE`:
+
+```bash
+export PYTHONUSERBASE=intentionally-disabled
+```
