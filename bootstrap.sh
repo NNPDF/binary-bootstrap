@@ -37,7 +37,7 @@ CONDARC="$HOME"/.condarc
 NETRC="$HOME"/.netrc
 
 if [ "$(uname)" == "Darwin" ]; then
-	CONDA_URL=https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+    CONDA_URL=https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 else
 	CONDA_URL=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 fi
@@ -94,12 +94,6 @@ while getopts "bfhp:" x; do
 	esac
 done
 
-HAVE_WGET=$(which wget)
-if ! [ $HAVE_WGET  ]; then
-	echo "Error. This script requires wget. Please install it."
-	exit 1
-fi
-
 echo "Setting up componentes for the NNPDF binaries..."
 
 HAVE_CONDA=$(which conda)
@@ -128,11 +122,11 @@ fi
 
 if [ "$SKIP_DOWNLOAD" = false  ]; then
 	echo "Downloading conda"
-	TEMP_PATH=`mktemp -d -t conda_downloadXXXXXXXXX`
-    wget $CONDA_URL -P $TEMP_PATH
-	#TEMP_PATH='/tmp/conda_downloadRyt1MU2sR'
+	CONDA_FILE=`mktemp -d -t conda_downloadXXXXXXXXX`/conda_installer.sh
+    echo $CONDA_URL
+    curl -Lo ${CONDA_FILE} "${CONDA_URL}"
+    echo ${CONDA_FILE}
 	echo "Entering conda installer."
-	CONDA_FILE="$TEMP_PATH/*.sh"
 	chmod +x $CONDA_FILE
 	bash $CONDA_FILE
 	if [ $? == 0 ]; then
@@ -149,7 +143,11 @@ EOF
 if [ $HAVE_CONDA ]; then
 	CONDA_READY=''
 else
-	source $HOME/.bashrc
+    # Do this only if bash is available
+    if [[ -f ${HOME}/.bashrc ]]
+    then
+        source $HOME/.bashrc
+    fi
 	HAVE_CONDA=$(which conda)
 	if [ $HAVE_CONDA ]; then
 		read -d '' CONDA_READY << EOF
