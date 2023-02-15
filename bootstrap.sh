@@ -123,9 +123,7 @@ fi
 if [ "$SKIP_DOWNLOAD" = false  ]; then
 	echo "Downloading conda"
 	CONDA_FILE=`mktemp -d -t conda_downloadXXXXXXXXX`/conda_installer.sh
-    echo $CONDA_URL
     curl -Lo ${CONDA_FILE} "${CONDA_URL}"
-    echo ${CONDA_FILE}
 	echo "Entering conda installer."
 	chmod +x $CONDA_FILE
 	bash $CONDA_FILE
