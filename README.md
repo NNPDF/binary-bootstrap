@@ -28,5 +28,5 @@ In case of a conflict between local and conda-installed packages, use the enviro
 export PYTHONUSERBASE=intentionally-disabled
 ```
 
-If the installation of the `nnpdf` package hangs or takes a long time, a solution is to use the `libmamba` solver as [explained here].
+If the installation of the `nnpdf` package hangs or takes a long time, a solution is to use the `libmamba` solver as [explained here](https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community).
 Note that from September '23, `libmamba` will be the default solver in conda so after this date updating conda `conda update -n base conda` should be enough.
