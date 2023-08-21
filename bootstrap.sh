@@ -44,11 +44,10 @@ fi
 
 read -d '' CONDARCCONTENT << EOF
 channels:
-  - https://packages.nnpdf.science/private
   - https://packages.nnpdf.science/public
   - defaults
   - conda-forge
-
+solver: libmamba
 EOF
 
 
