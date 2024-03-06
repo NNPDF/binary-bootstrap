@@ -9,8 +9,8 @@ This script does three things:
 ```
 channels:
   - https://packages.nnpdf.science/public
-  - defaults
   - conda-forge
+  - defaults
 ```
 
  In case the file exists, the script doesn't touch it (as not even
@@ -18,6 +18,7 @@ channels:
 
 Note: Make sure that the order of the channels is the same as above
 Otherwise you might receive incompatible packages.
+Defaults is not necessary.
 
 Common issues
 -------------

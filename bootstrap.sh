@@ -37,17 +37,21 @@ CONDARC="$HOME"/.condarc
 NETRC="$HOME"/.netrc
 
 if [ "$(uname)" == "Darwin" ]; then
-    CONDA_URL=https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+    
+	if [ "$(uname)" == "arm64" ]; then
+		CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+	else
+		CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+	fi
 else
-	CONDA_URL=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+	CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 fi
 
 read -d '' CONDARCCONTENT << EOF
 channels:
-  - https://packages.nnpdf.science/private
   - https://packages.nnpdf.science/public
-  - defaults
   - conda-forge
+  - defaults
 
 EOF
 
