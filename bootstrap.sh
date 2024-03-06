@@ -37,12 +37,7 @@ CONDARC="$HOME"/.condarc
 NETRC="$HOME"/.netrc
 
 if [ "$(uname)" == "Darwin" ]; then
-    
-	if [ "$(uname)" == "arm64" ]; then
-		CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
-	else
-		CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-	fi
+	CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 else
 	CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 fi
@@ -137,7 +132,16 @@ if [ "$SKIP_DOWNLOAD" = false  ]; then
     curl -Lo ${CONDA_FILE} "${CONDA_URL}"
 	echo "Entering conda installer."
 	chmod +x $CONDA_FILE
-	bash $CONDA_FILE
+
+  	if [ "$(uname -m)" == "arm64" ]
+   	then
+    		# not all packages are available for m1 in conda, when they are we can change to:
+      		# CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+ 		arch -x86_64 bash $CONDA_FILE
+   	else
+		bash $CONDA_FILE
+  	fi
+   
 	if [ $? == 0 ]; then
 		INSTALLED_CONDA=$YES
 	fi
@@ -202,4 +206,3 @@ install the NNPDF binaries now. For example, to install the main code, run:
 $BLUE
 conda install nnpdf
 $RESET"
-
