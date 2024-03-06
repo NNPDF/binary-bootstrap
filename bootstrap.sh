@@ -47,7 +47,6 @@ channels:
   - https://packages.nnpdf.science/private
   - https://packages.nnpdf.science/public
   - conda-forge
-  - defaults
 
 EOF
 
