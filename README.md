@@ -1,6 +1,20 @@
+The script in this repository is a quick and easy way of installing the latest version of nnpdf into your computer under a conda environment:
+
+```bash
+curl https://raw.githubusercontent.com/NNPDF/binary-bootstrap/master/bootstrap.sh -o bootstrap.sh
+sh bootstrap.sh
+```
+
+and, assuming that the initialization step was accepted in the previous script,
+
+```bash
+conda create -n nnpdf_env nnpdf -y
+conda activate nnpdf_env
+```
+
 This script does three things:
 
- - Download and install conda.
+ - Download and install conda, trying to get the right architecture for the computer. You can run the following in your terminal:
  
  - Set the appropiriate conda channels to install the NNPDF
  dependencies. This is done by writting a ~/.condarc file with the
