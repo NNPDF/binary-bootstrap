@@ -1,3 +1,9 @@
+NOTE:
+
+Since NNPDF 4.0.10, the package is available from  `conda-forge` and the script is not needed to set up private channels.
+You can download [miniconda](https://www.anaconda.com/docs/getting-started/miniconda/main) directly or use another implementation such as [pixi](https://pixi.sh/latest/).
+
+
 The script in this repository is a quick and easy way of installing the latest version of nnpdf into your computer under a conda environment:
 
 ```bash
